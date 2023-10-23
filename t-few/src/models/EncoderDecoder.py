@@ -34,6 +34,7 @@ class EncoderDecoder(LightningModule):
 
         self.best_eval_model_metric = [-1]
         self.best_eval_global_step = -1
+        self.validation_step_outputs = []
 
         if self.config.fishmask_mode is not None:
             fishmask_plugin_on_init(self)
@@ -240,6 +241,7 @@ class EncoderDecoder(LightningModule):
 
     def validation_step(self, batch, batch_idx):
         batch_output = self.predict(batch)
+        self.validation_step_outputs.append(batch_output)
         return batch_output
 
     def validation_test_shared_preparation(self, outputs, output_file):
@@ -283,8 +285,8 @@ class EncoderDecoder(LightningModule):
 
         return metrics
 
-    def validation_epoch_end(self, outputs):
-        metrics = self.validation_test_shared_preparation(outputs, self.config.dev_score_file)
+    def on_validation_epoch_end(self):
+        metrics = self.validation_test_shared_preparation(self.validation_step_outputs, self.config.dev_score_file)
 
         # Consider best validation performance based on AUC
         relevant_metrics = ['AUC']
@@ -363,6 +365,6 @@ class EncoderDecoder(LightningModule):
 
             self._last_global_step_saved = self.global_step
 
-    def on_before_optimizer_step(self, optimizer, optimizer_idx):
+    def on_before_optimizer_step(self, optimizer):
         if self.config.fishmask_mode is not None:
             fishmask_plugin_on_optimizer_step(self)

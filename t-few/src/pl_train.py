@@ -41,10 +41,10 @@ def main(config):
 
     trainer = Trainer(
         enable_checkpointing=False,
-        gpus=torch.cuda.device_count(),
+        # gpus=torch.cuda.device_count(),
         precision=config.compute_precision,
-        amp_backend="native",
-        strategy=config.compute_strategy if config.compute_strategy != "none" else None,
+        # amp_backend="native",
+        # strategy=config.compute_strategy if config.compute_strategy != "none" else None,
         logger=logger,
         log_every_n_steps=4,
         max_steps=config.num_steps,
@@ -80,7 +80,7 @@ if __name__ == "__main__":
         print(f"Skip finished experiment {config.exp_name}")
     else:
         print(f"Mark experiment {config.exp_name} as claimed")
-        with open(config.finish_flag_file, "a+") as f:
-            f.write(datetime.now().strftime("%m/%d/%Y %H:%M:%S") + "\n")
         set_seeds(config.seed)
         main(config)
+        with open(config.finish_flag_file, "a+") as f:
+            f.write(datetime.now().strftime("%m/%d/%Y %H:%M:%S") + "\n")
