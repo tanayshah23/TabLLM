@@ -70,6 +70,11 @@ do
         python -m src.pl_train -c ${model}.json+ia3.json+global.json -k dataset=${dataset} load_weight="pretrained_checkpoints/${model}_ia3_finish.pt" num_steps=${num_steps} num_shot=${num_shot} \
         exp_name=${model}_${dataset}_numshot${num_shot}_seed${seed}_ia3_pretrained100k few_shot_random_seed=${seed} seed=${seed} allow_skip_exp=${allow_skip_exp} eval_before_training=${eval_before_training} eval_epoch_interval=${eval_epoch_interval} \
         batch_size=${train_batch_size} grad_accum_factor=${grad_accum_factor} lr=${lr}
+        # Comment above and un-comment the below one for debugging
+        # CUDA_VISIBLE_DEVICES=${cuda_device} CONFIG_PATH=configs HF_HOME=.cache/huggingface \
+        # python -m debugpy --listen 0.0.0.0:5678 --wait-for-client src/pl_train.py -c ${model}.json+ia3.json+global.json -k dataset=${dataset} load_weight="pretrained_checkpoints/${model}_ia3_finish.pt" num_steps=${num_steps} num_shot=${num_shot} \
+        # exp_name=${model}_${dataset}_numshot${num_shot}_seed${seed}_ia3_pretrained100k few_shot_random_seed=${seed} seed=${seed} allow_skip_exp=${allow_skip_exp} eval_before_training=${eval_before_training} eval_epoch_interval=${eval_epoch_interval} \
+        # batch_size=${train_batch_size} grad_accum_factor=${grad_accum_factor} lr=${lr}
       done
     done
   done

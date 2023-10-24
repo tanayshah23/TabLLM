@@ -59,6 +59,24 @@ def main(config):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    # Only for debugging
+    # k_dict = {
+    #     "dataset": "heart",
+    #     "load_weight": "pretrained_checkpoints/t03b_ia3_finish.pt",
+    #     "num_steps": 60,
+    #     "num_shot": 8,
+    #     "exp_name": "t03b_heart_numshot8_seed1__ia3_pretrained100k",
+    #     "few_shot_random_seed": 1,
+    #     "seed": 1,
+    #     "allow_skip_exp": True,
+    #     "eval_before_training": True,
+    #     "eval_epoch_interval": 30,
+    #     "batch_size": 4,
+    #     "grad_accum_factor": 1,
+    #     "lr": 0.003
+    # }
+    # parser.add_argument("-c", "--config_files", required=False, default="t03b.json+ia3.json+global.json")
+    # parser.add_argument("-k", "--kwargs", nargs="*", action=ParseKwargs, default=k_dict)
     parser.add_argument("-c", "--config_files", required=True)
     parser.add_argument("-k", "--kwargs", nargs="*", action=ParseKwargs, default={})
     args = parser.parse_args()
