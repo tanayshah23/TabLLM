@@ -362,6 +362,13 @@ def load_train_validation_test(dataset_name, data_dir):
         dataset = dataset.rename(columns={'Outcome': 'label'})
         dataset_train, dataset_valid, dataset_test = train_validation_test_split(dataset)
         assert len(dataset_train) + len(dataset_valid) + len(dataset_test) == original_size
+    
+    elif dataset_name == "anomaly":
+        dataset = pd.read_csv(data_dir / 'anomaly.csv')
+        original_size = len(dataset)
+        dataset = dataset.rename(columns={'Label': 'label'})
+        dataset_train, dataset_valid, dataset_test = train_validation_test_split(dataset)
+        assert len(dataset_train) + len(dataset_valid) + len(dataset_test) == original_size
 
     else:
         raise ValueError("Dataset not found")
@@ -377,7 +384,8 @@ def load_train_validation_test(dataset_name, data_dir):
         'bank': 17,
         'jungle': 7,
         'wine': 12,
-        'calhousing': 9
+        'calhousing': 9,
+        'anomaly': 18
     }
     assert dataset_name in dataset_specs.keys() and len(dataset.columns) == dataset_specs[dataset_name]
 
