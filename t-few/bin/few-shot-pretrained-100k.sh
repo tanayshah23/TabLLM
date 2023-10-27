@@ -20,9 +20,9 @@ do
   # For zero-shot set to '0', for all to 'all'
   for num_shot in 4 #8 16 32 64 128 256 512
   do
-    # Datasets: car, income, heart, diabetes, jungle, bank, blood, calhousing, creditg, jungle
+    # Datasets: anomaly, car, income, heart, diabetes, jungle, bank, blood, calhousing, creditg, jungle
     # Run all serializations for car
-    for dataset in heart #car car_list car_list_permuted car_list_shuffled car_list_values car_gpt car_t0 car_ttt
+    for dataset in anomaly #car car_list car_list_permuted car_list_shuffled car_list_values car_gpt car_t0 car_ttt
     do
       # Zero-shot
       # eval_before_training=True

@@ -16,6 +16,7 @@ import pandas as pd
 from sklearn.metrics import roc_auc_score, precision_recall_curve, auc, f1_score
 
 templates_for_custom_tasks = {
+    'anomaly': 'anomaly',
     'income': '50000_dollars',
     'car': 'rate_decision',
     'heart': 'heart_disease',
