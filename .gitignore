@@ -1,6 +1,6 @@
 .DS_Store
 t-few/.cache/
-datasets_serialized/
+datasets_serialized/*/cache-*
 helper/__pycache__/external_datasets_variables.cpython-310.pyc
 helper/__pycache__/note_generator.cpython-310.pyc
 helper/__pycache__/note_template.cpython-310.pyc
