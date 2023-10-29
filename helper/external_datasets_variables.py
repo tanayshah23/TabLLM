@@ -677,8 +677,6 @@ template_config_anomaly = {
 
 
 template_anomaly = 'The brand of the vehicle is ${Maker}. ' \
-                 'The year of the vehicles advertisement is ${Adv_year}. ' \
-                 'The month of the vehicles advertisement is ${Adv_month}. ' \
                  'The color of the vehicle is ${Color}. ' \
                  'The body type of the vehicle is ${Bodytype}. ' \
                  'The distance covered by the vehicle by the vehicle is ${Runned_Miles}. ' \
