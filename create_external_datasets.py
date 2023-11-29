@@ -65,7 +65,8 @@ def main():
                    ('_permuted' if args.permuted else '') + \
                    ('_values' if args.values else '') + \
                    ('_shuffled' if args.shuffled else '') + \
-                   ('_importance' if args.feature_importance else '')
+                   ('_importance' if args.feature_importance else '') + \
+                   ('_latex' if args.latex else '')
     dataset = load_train_validation_test(args.dataset, data_dir)
 
     if args.debug:
@@ -534,6 +535,10 @@ def parse_args():
     parser.add_argument(
         "--list",
         action="store_true",
+    )
+    parser.add_argument(
+        "--latex",
+        action="store_true"
     )
     parser.add_argument(
         "--tabletotext",

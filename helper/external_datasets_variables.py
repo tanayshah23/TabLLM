@@ -753,3 +753,12 @@ template_anomaly_list_values = '${Maker}\n' \
 template_config_anomaly_list_values = template_config_anomaly_list
 template_anomaly_list_shuffled = template_anomaly_list
 template_config_anomaly_list_shuffled = template_config_anomaly_list
+
+template_config_anomaly_latex = {
+    'pre': {
+        'Adv_month': lambda x: month_names[int(x)],
+        'repair_complexity': lambda x: repair_complexities[int(x)]
+    }
+}
+
+template_anomaly_latex = "\hline ${Maker} & ${Adv_year} & ${Adv_month} & ${Color} & ${Bodytype} & ${Runned_Miles} & ${Engin_size} & ${Gearbox} & ${Fuel_type} & ${Price} & ${Seat_num} & ${Door_num} & ${issue} & ${breakdown_date} & ${repair_complexity} & ${repair_hours} & ${repair_cost}\\\\"

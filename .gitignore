@@ -5,3 +5,5 @@ helper/__pycache__/external_datasets_variables.cpython-310.pyc
 helper/__pycache__/note_generator.cpython-310.pyc
 helper/__pycache__/note_template.cpython-310.pyc
 helper/__pycache__/preprocess.cpython-310.pyc
+datasets_serialized/dataset-generation-20231108-012150/heart_lr_examples.p
+helper/__pycache__/
