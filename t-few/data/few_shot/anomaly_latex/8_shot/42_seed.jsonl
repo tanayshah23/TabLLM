@@ -1,0 +1,8 @@
+{"note": "\\hline Land Rover & 2017.0 & November & grey & SUV & 5000.0 & 2.0L & Automatic & Diesel & 33489.0 & 5.0 & 5.0 & Sensor Malfunction & 2017-11-23 & hard & 9.0 & 1854.45\\\\", "label": 0.0, "idx": 6681}
+{"note": "\\hline Hyundai & 2017.0 & December & silver & Hatchback & 47380.0 & 1.0L & Manual & Petrol & 5995.0 & 5.0 & 5.0 & Brake Pads Worn & 2017-12-26 & easy & 2.0 & 140.283244237575\\\\", "label": 1.0, "idx": 626}
+{"note": "\\hline DS & 2017.0 & November & grey & Hatchback & 10.0 & 1.6L & Manual & Diesel & 19990.0 & 5.0 & 5.0 & Alternator Failing & 2017-11-19 & medium & 4.0 & 479.8\\\\", "label": 0.0, "idx": 1062}
+{"note": "\\hline Ford & 2018.0 & April & gelb & Hatchback & 133000.0 & 1.6L & Manual & Petrol & 1100.0 & 5.0 & 5.0 & Flat Tyres & 2018-04-05 & easy & 1.0 & 20.33\\\\", "label": 1.0, "idx": 6300}
+{"note": "\\hline Citroen & 2018.0 & May & black & Hatchback & 76000.0 & 1.6L & Manual & Diesel & 2495.0 & 4.0 & 3.0 & Starter Motor Issue & 2018-05-02 & medium & 6.0 & 144.95\\\\", "label": 0.0, "idx": 6488}
+{"note": "\\hline Ferrari & 2017.0 & November & red & Coupe & 8047.0 & 6.0L & Semi-Automatic & Petrol & 109950.0 & 15.0 & 0.0 & Flat Tyres & 2017-11-16 & hard & 3.0 & 92.985\\\\", "label": 1.0, "idx": 5376}
+{"note": "\\hline Ford & 2018.0 & February & red & MPV & 7355.0 & 1.6L & Automatic & Petrol & 7995.0 & 5.0 & 5.0 & Gear Box Issue & 2018-02-16 & easy & 2.0 & 119.95\\\\", "label": 0.0, "idx": 6443}
+{"note": "\\hline Ford & 2018.0 & June & grey & SUV & 85000.0 & 2.0L & Manual & Diesel & 6595.0 & 5.0 & 5.0 & Radiator Leaking & 2018-06-26 & easy & 2.0 & 621.728899600331\\\\", "label": 1.0, "idx": 2513}

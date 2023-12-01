@@ -17,6 +17,7 @@ from sklearn.metrics import roc_auc_score, precision_recall_curve, auc, f1_score
 
 templates_for_custom_tasks = {
     'anomaly': 'anomaly',
+    'anomaly_latex': 'anomaly_latex',
     'income': '50000_dollars',
     'car': 'rate_decision',
     'heart': 'heart_disease',
@@ -221,7 +222,8 @@ class BaseDatasetReader(object):
 
 class CustomCategoricalReader(BaseDatasetReader):
     def __init__(self, config):
-        task = config.dataset.split('_')[0].lower()
+        # task = config.dataset.split('_')[0].lower()
+        task = config.dataset.lower()
         # Select correct subtask (especially for right template)
         subtask = templates_for_custom_tasks[task]
         assert subtask is not None
@@ -230,7 +232,8 @@ class CustomCategoricalReader(BaseDatasetReader):
     # There are no pre-defined templates for this custom task, so load them manually by hijacking this function.
     def get_template(self, template_idx):
         # Add custom template
-        task = self.config.dataset.split('_')[0].lower()
+        # task = self.config.dataset.split('_')[0].lower()
+        task = self.config.dataset.lower()
         yaml_dict = yaml.load(open('../templates/templates_' + task + '.yaml', "r"),
                               Loader=yaml.FullLoader)
         prompts = yaml_dict['templates']
