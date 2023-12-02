@@ -10,7 +10,7 @@ import pandas as pd
 import xgboost as xgboost
 from datasets import DatasetDict, concatenate_datasets, Dataset
 from sklearn.linear_model import LogisticRegression
-import lightgbm as lgb
+#import lightgbm as lgb
 from sklearn.metrics import roc_auc_score
 from sklearn.model_selection import StratifiedKFold, GridSearchCV, KFold
 from sklearn.preprocessing import StandardScaler, OrdinalEncoder
@@ -39,10 +39,10 @@ def main():
             'learning_rate': [0.01, 0.03, 0.1, 0.3],
         },
         'xgboost': {
-            'max_depth': [2, 4, 6, 8, 10, 12],
-            'alpha': [1e-8, 1e-7, 1e-6, 1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1.],
-            'lambda': [1e-8, 1e-7, 1e-6, 1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1.],
-            'eta': [0.01, 0.03, 0.1, 0.3],
+            'max_depth': [8],
+            'alpha': [1e-8 ],
+            'lambda': [1e-8],
+            'eta': [0.01],
         },
         'tabpfn': {
             'device': ['cpu'],
@@ -56,21 +56,25 @@ def main():
     }
 
     # Hijack parameter for running all
-    args_datasets = ['car', 'income', 'heart', 'diabetes', 'blood', 'bank', 'jungle', 'creditg', 'calhousing']
+    args_datasets = ['anomaly']
     all_results = pd.DataFrame([], index=args_datasets)
     all_results_sd = pd.DataFrame([], index=args_datasets)
     for args.dataset in args_datasets:
         # Configuration
+<<<<<<< Updated upstream
         data_dir = Path("/root/TabLLM/datasets")
+=======
+        data_dir = Path("datasets")
+>>>>>>> Stashed changes
         data_dir = data_dir / args.dataset
 
-        models = ['lr']
+        models = ['xgboost']
         assert(len(models)) == 1  # For current output only one model is supported
         # models = ['output_datasets']
         ts = datetime.datetime.now().strftime("-%Y%m%d-%H%M%S")
         metric = 'roc_auc'  # accuracy
-        num_shots = [4, 8, 16, 32, 64, 128, 256, 512, 'all']  # , 1024, 2048, 4096, 8192, 16384, 50000, 'all']  # ['all']
-        seeds = [42, 1024, 0, 1, 32]   # , 45, 655, 186, 126, 836]
+        num_shots = [4, 8, 16, 32]  # , 1024, 2048, 4096, 8192, 16384, 50000, 'all']  # ['all']
+        seeds = [42]   # , 45, 655, 186, 126, 836]
         seeded_results = defaultdict(list)
         if metric == 'roc_auc' and args.dataset == 'car':
             # This computes the roc_auc_score for ovr on macro level:
@@ -267,34 +271,8 @@ def evaluate_model(seed, model, metric, parameters, X_train, y_train, X_valid, y
     clf = GridSearchCV(estimator=estimator, param_grid=parameters, cv=inner_cv, scoring=metric, n_jobs=40, verbose=0)
     clf.fit(X_train, y_train)
 
-    # In depth debug linear model to determine support of each patient
-    # if model == 'lr':
-    #     print(len(list(est.coef_[0])))
-    #     print(sum([(x != 0) for x in list(est.coef_[0])]))
-    #     print(clf.best_params_)
-    #     est = clf.best_estimator_
-    #     print('Coefficients:', len(list(est.coef_[0])), 'non-zero:', sum([(x != 0) for x in list(est.coef_[0])]))
-    #     print('Coefficients wout static:', len(list(est.coef_[0])) - 9, '/3 = ', (len(list(est.coef_[0])) - 9) / 3)
-    #     # Determine non-zero weights in test set
-    #     weights_per_person = X_test.toarray() * est.coef_[0]
-    #     # Remove nine trailing static features
-    #     weights_per_person = weights_per_person[:, :-9]
-    #     non_zero = np.count_nonzero(weights_per_person, axis=1)
-    #     print('Windowed', np.median(non_zero), np.quantile(non_zero, 0.25), np.quantile(non_zero, 0.75), np.max(non_zero))
-    #     # Non zero for concept, so summed up windows
-    #     weights_per_person = weights_per_person.reshape((weights_per_person.shape[0], 3, int(weights_per_person.shape[1]/3)))
-    #     weights_per_person = np.sum(weights_per_person, axis=1)
-    #     non_zero = np.count_nonzero(weights_per_person, axis=1)
-    #     print('Not windowed', np.median(non_zero), np.quantile(non_zero, 0.25), np.quantile(non_zero, 0.75), np.max(non_zero))
-
     score_test = compute_metric(clf, X_test, y_test)
     return score_test
-
-    #     one_hot_test = pd.get_dummies(dataset['test'][[c for c in list(dataset['test']) if c != 'label']])[columns]
-    #     pred = np.argmax(lr.predict_proba(one_hot_test), axis=1)
-    #     acc_test = np.sum(pred == np.array(dataset['test']['label'].tolist()))/pred.shape[0]
-    #     print("C: %.4f, Val acc: %.2f, Test acc: %.2f" % (C, acc_valid, acc_test))
-    # return
 
 
 def prepare_data(dataset_name, model_name, dataset, enc=None, scale=True):

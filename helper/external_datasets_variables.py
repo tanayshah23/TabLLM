@@ -652,3 +652,100 @@ template_wine_list_values = '${fixed_acidity}\n' \
 template_config_wine_list_values = template_config_wine_list
 template_wine_list_shuffled = template_wine_list
 template_config_wine_list_shuffled = template_config_wine_list
+<<<<<<< Updated upstream
+=======
+
+########################################################################################################################
+# anomaly
+########################################################################################################################
+
+
+month_names = {
+    1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June',
+    7: 'July', 8: 'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December',
+    13: 'Invalid', 17: 'Invalid', 33: 'Invalid'
+}
+
+repair_complexities = {
+    1: 'easy', 2: 'medium', 3: 'hard', 4: 'very hard'
+}
+
+template_config_anomaly = {
+    'pre': {
+        'Adv_month': lambda x: month_names[int(x)],
+        'repair_complexity': lambda x: repair_complexities[int(x)]
+    }
+}
+
+
+template_anomaly = 'The brand of the vehicle is ${Maker} and its color is ${Color} with bodytype ${Bodytype}.'  \
+                'The price of the vehicle is ${Price}. ' \
+                 'The distance covered by the vehicle by the vehicle is ${Runned_Miles}. ' \
+                 'The engine size, gearbox type and fuel type of the vehicle are: ${Engin_size}, ${Gearbox} and ${Fuel_type}. ' \
+                 'The seating capacity of the vehicle is ${Seat_num} and number of doors is ${Door_num}. ' \
+                 'The issue with the vehicle is ${issue} and it broke down on ${breakdown_date}. ' \
+                 'The complexity of repair the issue with the vehicle is ${repair_complexity}. ' \
+                 'The hours and cost taken to repair the issue with the vehicle are ${repair_hours} and ${repair_cost}. ' \
+                 
+template_config_anomaly_list = template_config_anomaly
+                 
+template_anomaly_list = '- Brand of the vehicle: ${Maker}\n' \
+                        '- Year of advertisement: ${Adv_year}\n' \
+                        '- Month of advertisement: ${Adv_month}\n' \
+                        '- Color of the vehicle: ${Color}\n' \
+                        '- Body type: ${Bodytype}\n' \
+                        '- Distance covered: ${Runned_Miles}\n' \
+                        '- Engine size: ${Engin_size}\n' \
+                        '- Gearbox type: ${Gearbox}\n' \
+                        '- Fuel type: ${Fuel_type}\n' \
+                        '- Price: ${Price}\n' \
+                        '- Seating capacity: ${Seat_num}\n' \
+                        '- Number of doors: ${Door_num}\n' \
+                        '- Issue: ${issue}\n' \
+                        '- Breakdown date: ${breakdown_date}\n' \
+                        '- Repair complexity: ${repair_complexity}\n' \
+                        '- Repair hours: ${repair_hours}\n' \
+                        '- Repair cost: ${repair_cost}\n'
+
+template_anomaly_list_permuted = '- Color of the vehicle: ${Color}\n' \
+                                '- Year of advertisement: ${Gearbox}\n' \
+                                '- Month of advertisement: ${Bodytype}\n' \
+                                '- Brand of the vehicle: ${Adv_month}\n' \
+                                '- Engine size: ${Adv_year}\n' \
+                                '- Distance covered: ${Price}\n' \
+                                '- Number of doors: ${Runned_Miles}\n' \
+                                '- Repair cost: ${Seat_num}\n' \
+                                '- Issue: ${Door_num}\n' \
+                                '- Gearbox type: ${issue}\n' \
+                                '- Seating capacity: ${breakdown_date}\n' \
+                                '- Body type: ${repair_complexity}\n' \
+                                '- Repair hours: ${repair_hours}\n' \
+                                '- Fuel type: ${Reg_year}\n' \
+                                '- Repair complexity: ${Engin_size}\n' \
+                                '- Breakdown date: ${Fuel_type}\n' \
+                                '- Price: ${Maker}\n'
+
+template_config_anomaly_list_permuted = template_config_anomaly_list
+
+template_anomaly_list_values = '${Maker}\n' \
+                               '${Adv_year}\n' \
+                               '${Adv_month}\n' \
+                               '${Color}\n' \
+                               '${Bodytype}\n' \
+                               '${Runned_Miles}\n' \
+                               '${Engin_size}\n' \
+                               '${Gearbox}\n' \
+                               '${Fuel_type}\n' \
+                               '${Price}\n' \
+                               '${Seat_num}\n' \
+                               '${Door_num}\n' \
+                               '${issue}\n' \
+                               '${breakdown_date}\n' \
+                               '${repair_complexity}\n' \
+                               '${repair_hours}\n' \
+                               '${repair_cost}\n'
+
+template_config_anomaly_list_values = template_config_anomaly_list
+template_anomaly_list_shuffled = template_anomaly_list
+template_config_anomaly_list_shuffled = template_config_anomaly_list
+>>>>>>> Stashed changes
