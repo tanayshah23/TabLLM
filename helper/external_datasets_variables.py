@@ -753,3 +753,34 @@ template_anomaly_list_values = '${Maker}\n' \
 template_config_anomaly_list_values = template_config_anomaly_list
 template_anomaly_list_shuffled = template_anomaly_list
 template_config_anomaly_list_shuffled = template_config_anomaly_list
+
+template_config_anomaly_latex = {
+    'pre': {
+        'Adv_month': lambda x: month_names[int(x)],
+        'repair_complexity': lambda x: repair_complexities[int(x)]
+    }
+}
+
+template_anomaly_latex = "\hline ${Maker} & ${Adv_year} & ${Adv_month} & ${Color} & ${Bodytype} & ${Runned_Miles} & ${Engin_size} & ${Gearbox} & ${Fuel_type} & ${Price} & ${Seat_num} & ${Door_num} & ${issue} & ${breakdown_date} & ${repair_complexity} & ${repair_hours} & ${repair_cost}\\\\"
+
+template_config_anomaly_fi = {
+    'pre': {
+        'Adv_month': lambda x: month_names[int(x)],
+        'repair_complexity': lambda x: repair_complexities[int(x)]
+    }
+}
+
+template_anomaly_fi = 'The brand of the vehicle is ${Maker}. ' \
+                 'The color of the vehicle is ${Color}. ' \
+                 'The body type of the vehicle is ${Bodytype}. ' \
+                 'Critically the distance covered by the vehicle by the vehicle is ${Runned_Miles}. ' \
+                 'The engine size of the vehicle is ${Engin_size}. ' \
+                 'The gearbox type of the vehicle is ${Gearbox}. ' \
+                 'The fuel type of the vehicle is ${Fuel_type}. ' \
+                 'Critically the price of the vehicle is ${Price}. ' \
+                 'The seating capacity of the vehicle is ${Seat_num}. ' \
+                 'The number of doors in the vehicle is ${Door_num}. ' \
+                 'The issue with the vehicle is ${issue}. ' \
+                 'The complexity of repair the issue with the vehicle is ${repair_complexity}. ' \
+                 'Critically the hours taken to repair the issue with the vehicle is ${repair_hours}. ' \
+                 'Critically the cost to repair the issue with the vehicle is ${repair_cost}. '
