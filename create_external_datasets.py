@@ -66,7 +66,8 @@ def main():
                    ('_values' if args.values else '') + \
                    ('_shuffled' if args.shuffled else '') + \
                    ('_importance' if args.feature_importance else '') + \
-                   ('_latex' if args.latex else '')
+                   ('_latex' if args.latex else '') + \
+                   ('_fi' if args.fi else '')
     dataset = load_train_validation_test(args.dataset, data_dir)
 
     if args.debug:
@@ -538,6 +539,10 @@ def parse_args():
     )
     parser.add_argument(
         "--latex",
+        action="store_true"
+    )
+    parser.add_argument(
+        "--fi",
         action="store_true"
     )
     parser.add_argument(
